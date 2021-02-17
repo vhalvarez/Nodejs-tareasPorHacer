@@ -1,0 +1,6 @@
+* Empezamos creando el package.json: yarn init -y
+* Instalamos el package 'colors': yarn add colors
+* Creamos el archivo .gitignore y agregamos los modulos: node_modules/
+* Creamos app.js
+* Creamos una nueva carpeta llamada 'helpers' y adentro un archivo llamado 'mensajes.js'
+
