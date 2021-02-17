@@ -1,4 +1,4 @@
-const Tarea = require("./tarea")
+const Tarea = require('./tarea')
 
 class Tareas {
     _listado = {}
@@ -6,7 +6,7 @@ class Tareas {
     get listadoArr() {
         const listado = []
 
-        Object.keys(this._listado).forEach( key => {
+        Object.keys(this._listado).forEach((key) => {
             const tarea = this._listado[key]
             listado.push(tarea)
         })
@@ -14,13 +14,18 @@ class Tareas {
         return listado
     }
 
-    constructor(){
+    constructor() {
         this._listado = {}
+    }
+
+    cargarTareasFromArray(tareas = []) {
+        tareas.forEach((tarea) => {
+            this._listado[tarea.id] = tarea
+        })
     }
 
     crearTarea(desc = '') {
         const tarea = new Tarea(desc)
-
         this._listado[tarea.id] = tarea
     }
 }
