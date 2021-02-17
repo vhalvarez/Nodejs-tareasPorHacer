@@ -1,22 +1,27 @@
 require('colors')
-const { inquirerMenu, pausa } = require('./helpers/inquirer')
+const { inquirerMenu, pausa, leerInput } = require('./helpers/inquirer')
 const Tarea = require('./models/tarea')
 const Tareas = require('./models/tareas')
 console.clear()
 
 const main = async () => {
     let opt
+    const tareas = new Tareas()
 
     do {
-        // opt = await inquirerMenu()
+        opt = await inquirerMenu()
 
-        const tareas = new Tareas()
-        const tarea = new Tarea('Comprar comida')
+        switch (opt) {
+            case 1:
+                // crear opcion
+                const desc = await leerInput('Descripción: ')
+                tareas.crearTarea( desc )
+                break
+            case 2:
+                console.log(tareas._listado)
+                break
+        }
 
-        tareas._listado[tarea.id] = tarea
-
-        console.log(tareas)
-        
         await pausa()
     } while (opt !== 0)
 }
